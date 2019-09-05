@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>ЛАЗЕРБЭЙЗ</title>
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    
+</head>
+<body>
+
+        <div id="clpodbor" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Подбор клиента</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                            <div class="form-group">
+                        <select class="form-control" id="clientselect">
+                            <option value="0">г-н Никто</option>
+                        </select>
+                        <button type="button" class="btn btn-primary">Взять</button>
+                        </div>
+
+
+                        <p>Или добавить нового:</p>
+                            <form class="form" action="/clientAdd" method="post">
+                                <div class="form-group">
+                                    <label for="thename">Имя клиента</label>
+                                    <input type="text" name="name" class="form-control" id="thename" placeholder="Имя">
+                                </div>
+                                <div class="form-group">
+                                        <label for="thephone">Телефон клиента</label>
+                                        <input type="text" name="phone" class="form-control" id="thephone" placeholder="+79161231212">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="thecomm">Комментарий</label>
+                                            <input type="text" name="comm" class="form-control" id="thecomm" placeholder="-">
+                                        </div>
+                               
+                                
+                                <input type="submit" class="btn btn-primary" value="Добавить">
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Спрятать</button>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">LASERBASE</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/">Добавить<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Заказы</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Клиенты
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Добавить клиента</a>
+                        <a class="dropdown-item" href="#">Баланс по клиентам</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Расходы</a>
+                      </div>
+                    </li>
+                    
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Ключи в заказе" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+                  </form>
+                </div>
+              </nav>
+              <div class="container">
+<h1>Формирование заказа</h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationDefault01">Клиент</label>
+              <input class="form-control" type="text" name="clname" placeholder="Клиент..." readonly>
+            </div>
+            <div class="col-md-2 mb-1">
+                    <label for="clpod">Выбрать клиента</label>
+                    <input type="button" class="form-control btn btn-secondary" id="clpod" value="Подобрать" data-toggle="modal" data-target="#clpodbor">
+                  </div>
+            <div class="col-md-2 mb-1">
+              <label for="validationDefault02">Номер заказа</label>
+              <input type="text" class="form-control" id="validationDefault02" placeholder="Только цифры" value="" required>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationDefaultUsername">Тэг</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupPrepend2">#</span>
+                </div>
+                <input type="text" class="form-control" id="validationDefaultUsername" placeholder="тэги через запятую" aria-describedby="inputGroupPrepend2" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="validationDefault03">City</label>
+              <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="validationDefault04">State</label>
+              <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="validationDefault05">Zip</label>
+              <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+              <label class="form-check-label" for="invalidCheck2">
+                Agree to terms and conditions
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        
+</form>
+<hr/>
+
+
+</div>
+</body>
+
+</html>
