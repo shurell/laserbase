@@ -11,6 +11,7 @@
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>
     
+    
 </head>
 <body>
 
@@ -27,11 +28,12 @@
                             <div class="form-group">
                         <select class="form-control" id="clientselect">
                             <option value="0">г-н Никто</option>
-                        </select>
-                        <button type="button" class="btn btn-primary">Взять</button>
+                        </select><br/>
+                        <button type="button" id="pickcl" class="btn btn-primary" data-dismiss="modal">Взять</button>
                         </div>
                         <p>Или добавить нового:</p>
-                            <form class="form" action="/clientAdd" method="post">
+                            <form class="form" action="/" method="post">
+                              <input type="hidden" name="qtype" value="addclient"/>
                                 <div class="form-group">
                                     <label for="thename">Имя клиента</label>
                                     <input type="text" name="name" class="form-control" id="thename" placeholder="Имя">
@@ -75,7 +77,7 @@
                         Клиенты
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Добавить клиента</a>
+                          <a class="dropdown-item" href="#">Заказы по клиентам</a>
                         <a class="dropdown-item" href="#">Баланс по клиентам</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Расходы</a>
@@ -95,8 +97,9 @@
 <form action="/upload" method="post" enctype="multipart/form-data">
     <div class="form-row">
             <div class="col-md-4 mb-3">
+              <input type="hidden" name="clid" id="clid"/>
               <label for="validationDefault01">Клиент</label>
-              <input class="form-control" type="text" name="clname" placeholder="Клиент..." readonly>
+              <input class="form-control" type="text" name="clname" id="clname" placeholder="Клиент..." readonly>
             </div>
             <div class="col-md-2 mb-1">
                     <label for="clpod">Выбрать клиента</label>
@@ -145,6 +148,7 @@
 
 
 </div>
+<script src="js/my.js"></script>
 </body>
 
 </html>
